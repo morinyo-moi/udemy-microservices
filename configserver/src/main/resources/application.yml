@@ -1,0 +1,32 @@
+spring:
+    application:
+        name: "configserver"
+    profiles:
+        # active: native
+      active: git
+    cloud:
+        config:
+          server:
+          #  native:
+            #  search-locations: "classpath:/config"
+            # search-locations: "file:///home//mauriceotieno//Documents//config"
+            git:
+              uri: "https://github.com/morinyo-moi/config-server.git"
+              default-label: main
+              timeout: 5
+              clone-on-start: true
+              force-pull: true
+    rabbitmq:
+      host: "localhost"
+      port: 5672
+      username: "guest"
+      password: "guest"
+encrypt:
+  key: "U2FsdGVkX183LT0yx4rQuULMVmiHzM+aAtFAf4g1SUY="                      
+server:
+  port: 8071
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
